@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using EPlayersBackend.Interfaces;
@@ -30,8 +31,8 @@ namespace EPlayersBackend.Models
 
         public void Delete(Equipe e)
         {
-            List<string> linhas = ReadAllLines(PATH);
-            linhas.RemoveAll(y => y.Split(";")[0]== IdEquipe.ToString())
+            List<string> linhas = ReadAllLinesCSV(PATH);
+            linhas.RemoveAll(y => y.Split(";")[0]== IdEquipe.ToString());
             RewriteCSV(PATH, linhas);
         }
 
@@ -54,10 +55,15 @@ namespace EPlayersBackend.Models
 
         public void Update(Equipe e)
         {
-            List<string> linhas = ReadAllLines(PATH);
+            List<string> linhas = ReadAllLinesCSV(PATH);
             linhas.RemoveAll(y => y.Split(";")[0]== e.IdEquipe.ToString());
             linhas.Add(PrepararLinha(e) );
             RewriteCSV(PATH, linhas);
+        }
+
+        public void Delete(int IdEquipe)
+        {
+            throw new NotImplementedException();
         }
     }
 }
