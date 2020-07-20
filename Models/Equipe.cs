@@ -29,13 +29,6 @@ namespace EPlayersBackend.Models
             return $"{e.IdEquipe};{e.Nome};{e.Imagem}";
         }
 
-        public void Delete(Equipe e)
-        {
-            List<string> linhas = ReadAllLinesCSV(PATH);
-            linhas.RemoveAll(y => y.Split(";")[0]== IdEquipe.ToString());
-            RewriteCSV(PATH, linhas);
-        }
-
         public List<Equipe> ReadAll()
         {
             List<Equipe> equipes = new List<Equipe>();
@@ -63,7 +56,9 @@ namespace EPlayersBackend.Models
 
         public void Delete(int IdEquipe)
         {
-            throw new NotImplementedException();
+            List<string> linhas = ReadAllLinesCSV(PATH);
+            linhas.RemoveAll(y => y.Split(";")[0]== IdEquipe.ToString());
+            RewriteCSV(PATH, linhas);
         }
     }
 }

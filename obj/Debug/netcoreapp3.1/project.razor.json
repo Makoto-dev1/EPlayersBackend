@@ -20546,13 +20546,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "i:\\Users\\Makoto-dev\\Desktop\\Senai\\EPlayersBackend\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "i:\\Users\\Makoto-dev\\Desktop\\Senai\\EPlayersBackend\\Views\\Equipe\\Index.cshtml",
+      "TargetPath": "Views\\Equipe\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "i:\\Users\\Makoto-dev\\Desktop\\Senai\\EPlayersBackend\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FilePath": "i:\\Users\\Makoto-dev\\Desktop\\Senai\\EPlayersBackend\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     }
   ],

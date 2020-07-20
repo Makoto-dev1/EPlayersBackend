@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EPlayersBackend.Models;
 using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace EPlayersBackend.Controllers
 {
@@ -22,16 +23,43 @@ namespace EPlayersBackend.Controllers
         }
 
         public IActionResult Cadastrar(IFormCollection form)
-        {
+        {   
             Equipe equipe = new Equipe();
             equipe.IdEquipe = Int32.Parse( form["IdEquipe"] );
-            equipe.Nome   = form["Nome"];
-            equipe.Imagem = form["Imagem"];
+            equipe.Nome   = form["Nome"];   
+            //Upload da imagem
+            
+            var file    = form.Files[0];
+            var folder  = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Equipes");
 
+            if(file != null)
+            {
+                if(!Directory.Exists(folder)){
+                    Directory.CreateDirectory(folder);
+                }
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/", folder, file.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))  
+                {  
+                    file.CopyTo(stream);  
+                }
+                equipe.Imagem   = file.FileName;
+            }
+            else
+            {
+                equipe.Imagem   = "padrao.png";
+            }
+            //Fim do upload
             equipeModel.Create(equipe);
 
-            ViewBag.Equipes = equipeModel.ReadAll();
             //Redirecionamento
+            return LocalRedirect("~/Equipe");
+        }
+
+        [Route("[controller]/{id}")]
+        public IActionResult excluir(int id)
+        {
+            equipeModel.Delete(id);
             return LocalRedirect("~/Equipe");
         }
     }
