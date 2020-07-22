@@ -1,36 +1,31 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using EPlayersBackend.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 
 namespace EPlayersBackend.Controllers
 {
-    public class EquipeController : Controller 
+    public class NoticiasController : Controller
     {
-        
-        Equipe equipeModel = new Equipe();
+
+        Noticias noticiaModel = new Noticias();
 
         public IActionResult Index()
         {
-            ViewBag.Equipes = equipeModel.ReadAll();
+            ViewBag.Noticias = noticiaModel.ReadAll();
             return View();
         }
-        
-        public IActionResult Cadastrar(IFormCollection form)
+         public IActionResult Cadastrar(IFormCollection form)
         {   
-            Equipe equipe = new Equipe();
-            equipe.IdEquipe = Int32.Parse( form["IdEquipe"] );
-            equipe.Nome   = form["Nome"];   
+            Noticias noticia = new Noticias();
+            noticia.IdNoticia = Int32.Parse( form["IdNoticia"] );
+            noticia.Titulo   = form["Titulo"];   
+            noticia.Texto = form["Texto"];
             //Upload da imagem
             
             var file    = form.Files[0];
-            var folder  = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Equipes");
+            var folder  = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Noticias");
 
             if(file != null)
             {
@@ -43,24 +38,24 @@ namespace EPlayersBackend.Controllers
                 {  
                     file.CopyTo(stream);  
                 }
-                equipe.Imagem   = file.FileName;
+                noticia.Imagem   = file.FileName;
             }
             else
             {
-                equipe.Imagem   = "padrao.png";
+                noticia.Imagem   = "padrao.png";
             }
             //Fim do upload
-            equipeModel.Create(equipe);
+            noticiaModel.Create(noticia);
 
             //Redirecionamento
-            return LocalRedirect("~/Equipe");
+            return LocalRedirect("~/Noticias");
         }
 
         [Route("[controller]/{id}")]
         public IActionResult excluir(int id)
         {
-            equipeModel.Delete(id);
-            return LocalRedirect("~/Equipe");
+            noticiaModel.Delete(id);
+            return LocalRedirect("~/Noticias");
         }
     }
 }

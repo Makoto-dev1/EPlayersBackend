@@ -35,3 +35,4 @@ I:\Users\Makoto-dev\Desktop\Senai\EPlayersBackend\obj\Debug\netcoreapp3.1\EPlaye
 I:\Users\Makoto-dev\Desktop\Senai\EPlayersBackend\obj\Debug\netcoreapp3.1\EPlayersBackend.pdb
 I:\Users\Makoto-dev\Desktop\Senai\EPlayersBackend\obj\Debug\netcoreapp3.1\EPlayersBackend.genruntimeconfig.cache
 I:\Users\Makoto-dev\Desktop\Senai\EPlayersBackend\obj\Debug\netcoreapp3.1\EPlayersBackend.csproj.CopyComplete
+I:\Users\Makoto-dev\Desktop\Senai\EPlayersBackend\obj\Debug\netcoreapp3.1\Razor\Views\Noticias\Index.cshtml.g.cs
